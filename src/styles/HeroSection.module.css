@@ -1,0 +1,68 @@
+.heroSection{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    min-height: 50vh;
+    margin: 5vh 0;
+
+}
+.heroSection > div {
+    position: relative;
+}
+.heroGrid1{
+    background-color: var(--primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: var(--accent);
+}
+.heroGrid1 > img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 110%;
+    width: auto;
+}
+.heroGrid1 > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.heroGrid1 h3{
+    font-size: var(--title-font-size);
+    line-height: var(--title-font-size);
+}
+.heroGrid1 h1, .heroGrid2 h1{
+    font-size: calc(var(--title-font-size) + 50px);
+    line-height: calc(var(--title-font-size) + 50px);
+    font-weight: 700;
+}
+.heroGrid2{
+    background-color: var(--accent);
+    color: var(--primary);
+}
+.heroGrid2 > img{
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 5%;
+    height: auto;
+    width: 130%;
+    transform: rotateY(180deg);
+}
+.heroGrid3{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 49% 49%;
+    gap: 2%;
+}
+.heroGrid3 > div {
+    background-color: var(--primary);
+    position: relative;
+}
+.heroGrid3 > div:first-child > img{
+    width: auto;
+    max-height: 200%;
+    position: absolute;
+    bottom: 0;
+}
