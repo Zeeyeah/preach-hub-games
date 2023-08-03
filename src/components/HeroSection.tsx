@@ -13,7 +13,7 @@ const HeroSection = () => {
     <section className={styles.heroSection}>
         <div className={styles.heroGrid1}>
             <div></div>
-            <Image src={lastOfUs} objectFit='contain' alt='lastOfUs' />
+            <Image src={lastOfUs} alt='lastOfUs' />
             <div>
                 <h3>SALE</h3>
                 <h1>50%</h1>
@@ -21,15 +21,15 @@ const HeroSection = () => {
             </div>
         </div>
         <div className={styles.heroGrid2}>
-            <Image src={genshin} objectFit='contain' alt='genshin' />
-            <h1>FREE TO PLAY GAMES</h1>
+            <Image src={genshin} alt='genshin' />
+            <h1>FREE <br /> TO <br /> PLAY <br /> GAMES</h1>
         </div>
         <div className={styles.heroGrid3}>
             <div>
-                <Image src={kratos} objectFit='contain' alt='kratos' />
+                <Image src={kratos} alt='kratos' />
             </div>
             <div>
-                <Image src={eldenring} objectFit='cover' fill={true} alt='eldenring' />
+                <Image src={eldenring} style={{objectFit: 'cover'}} fill={true} alt='eldenring' />
             </div>
         </div>
     </section>

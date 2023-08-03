@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '@/styles/Games.module.css'
-
+import Image from 'next/image'
 
  const Filters = () => {
   return (
@@ -22,12 +22,22 @@ import styles from '@/styles/Games.module.css'
     </div>
   )
 }
+interface GamesProps {
+    games: any
+}
 
-
-const Games = () => {
+const Games: React.FC<GamesProps> = ({games}) => {
   return (
     <section className={styles.games}>
         <Filters />
+        <div className={styles["gameCardWrapper"]}>
+          {games.map((game: any) => (
+            <div key={game.id} className={styles.gameCard}>
+            <Image src={game.image.original_url} width={300} height={300} alt='' />
+            <h1>{game.name}</h1>
+            </div>
+          ))}
+        </div>
     </section>
   )
 }

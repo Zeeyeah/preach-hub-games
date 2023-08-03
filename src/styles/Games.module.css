@@ -3,11 +3,20 @@
     height: 30px;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .filtersList{
+    position: relative;
     display: flex;
-    width: 80%;
+    width: 100%;
     gap: 10px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    padding: 0 10px ;
+}
+.filtersList::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 .filtersList > p{
     background-color: var(--secondary);
@@ -21,4 +30,8 @@
     padding: 10px 20px;
     font-size: var(--sun-headind);
     color: var(--background);
+}
+.gameCardWrapper{
+    display: flex;
+    flex-wrap: wrap;
 }

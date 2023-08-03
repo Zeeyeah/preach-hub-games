@@ -1,12 +1,26 @@
-import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import { Layout } from '@/components/Layout'
-import HeroSection from '@/components/HeroSection'
-import Games from '@/components/Games'
+import Head from 'next/head';
+import { Inter } from 'next/font/google';
+import { Layout } from '@/components/Layout';
+import HeroSection from '@/components/HeroSection';
+import Games from '@/components/Games';
+import axios from 'axios';
+import { env } from 'process';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
+const api_key: any = process.env.API_KEY;
 
-export default function Home() {
+// Define the type for the Game object (if not already defined)
+// Replace this with the actual type definition for your Game object
+interface Game {
+  name: string;
+  // Add other properties if available
+}
+
+interface HomeProps {
+  popularGames: Game[];
+}
+
+const Home: React.FC<HomeProps> = ({ popularGames }) => {
   return (
     <Layout>
       <Head>
@@ -16,7 +30,31 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroSection />
-      <Games />
+      <Games games={popularGames} />
     </Layout>
-  )
+  );
+};
+
+export default Home;
+
+export async function getStaticProps() {
+  const base_url = 'https://www.giantbomb.com/api/';
+  const endpoint = `games/?api_key=${api_key}&format=json&platforms=146&sort=date_added:desc`;
+
+  try {
+    const response = await axios.get(base_url + endpoint);
+    const popularGames = response.data.results;
+    return {
+      props: {
+        popularGames: popularGames,
+      },
+    };
+  } catch (error:any) {
+    console.error('Error fetching data:', error.message);
+    return {
+      props: {
+        popularGames: [], // Return an empty array or fallback data
+      },
+    };
+  }
 }
