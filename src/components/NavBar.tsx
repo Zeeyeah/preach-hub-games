@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '@/styles/NavBar.module.css'
 
 import preachLogo from '../../public/preachLogo.png'
@@ -9,11 +10,11 @@ const NavBar: FC = () => {
     return (
         <header className={styles.navBar}>
             <div className={styles.navWrapper}>
-                <div className={styles.logo}>
+                <Link href={'/'} className={styles.logo}>
                     <Image src={preachLogo} width={50} height={50} alt='logo' />
                     <h1>PreachHub</h1>
                     <span>GAMES</span>
-                </div>
+                </Link>
                 <nav>
                     <ul>
                         <li>Home</li>

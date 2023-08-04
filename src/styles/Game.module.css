@@ -1,0 +1,118 @@
+.game{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+.game section{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.screenShots{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 10px;
+}
+.screenShots img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.screenShotsSquare{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    gap: 10px;
+}
+.screenShotsSquare img:last-child{
+    column-span: 2fr;
+}
+.gameInfo{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secondary);
+    padding: var(--font-size);
+}
+.gameName{
+    font-size: var(--heading-font-size);
+    padding: 1vh 0;
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 1vh;
+    width: 100%;
+}
+.bannerScreenShot{
+    width: 100%;
+    height: auto;
+}
+.squareScreenshot{
+    position: relative;
+    margin-top: -30%;
+    max-width: 50%;
+}
+.ratings{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.ratings p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(var(--heading-font-size) - 10px);
+    margin: var(--font-size) 0;
+    font-weight: 600;
+    color: var(--accent);
+}
+.ratings p h4{
+    font-size: calc(var(--heading-font-size) - 20px);
+    font-weight: 500;
+    color: var(--text);
+}
+.gameInfo ul{
+    list-style: none;
+    width: 100%;
+}
+.gameInfo  h3{
+    font-size: var(--subheading-font-size);
+    margin: 1vh 0;
+    font-weight: 500;
+}
+.gameInfo li{
+    display: inline-block;
+    margin: 0 5px;
+    margin-bottom: calc(var(--font-size) - 10px);
+    font-size: calc(var(--font-size) + 2px);
+    padding: calc(var(--font-size) - 4px);
+    background-color: var(--background);
+    border: 1px solid var(--primary);
+}
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    width: 100%;
+    gap: 10px;
+}
+.buttons button{
+    min-height: var(--heading-font-size);
+    font-size: var(--subheading-font-size);
+    margin-top: 2vh;
+    padding: 10px;
+    background-color: var(--background);
+    border: 1px solid var(--primary);
+}
+.buttons button:first-child{
+    background-color: var(--accent);
+    color: var(--background);
+}
+@media (max-width: 576px) {
+    .game{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

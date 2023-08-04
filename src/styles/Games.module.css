@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    margin-bottom: 5vh;
 }
 .filtersList{
     position: relative;
@@ -32,6 +33,67 @@
     color: var(--background);
 }
 .gameCardWrapper{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+.gameCard{
+    padding: 10px;
+    background-color: var(--secondary);
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid var(--primary);
+}
+.gameCard:hover{
+    background-color: #d3f1dd;
+}
+.gameCard:hover .gamePoster > img{
+    transform: scale(101%);
+}
+.gamePoster{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 5px;
+}
+.gamePoster > img{
+    transition: all 300ms ease;
+    border-radius: 16px;
+    object-fit: cover;
+}
+.gameCard h1{
+    font-size: var(--subheading-font-size);
+}
+.gameCard h2{
+    color: var(--accent);
+    font-size: var(--heading-font-size);
+}
+.gameCard h2 span{
+    font-size: calc(var(--font-size) + 4px);
+    color: var(--text);
+    font-weight: 400;
+}
+@media (max-width: 1300px){
+    .gameCardWrapper{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+@media (max-width: 992px){
+    .gameCardWrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+}
+@media (max-width: 768px){
+    .gameCardWrapper{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+@media (max-width: 576px){
+    .gameCardWrapper{
+        grid-template-columns: 1fr;
+    }
+    
 }

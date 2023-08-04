@@ -5,9 +5,9 @@
   --primary: #91be89;
   --secondary: #d4e7db;
   --accent: #559b6c;
-  --font-size: 12px;
-  --heading-font-size: 24px;
-  --subheading-font-size: 18px;
+  --font-size: 16px;
+  --heading-font-size: 28px;
+  --subheading-font-size: 22px;
   --title-font-size: 32px;
 }
 
@@ -40,8 +40,8 @@
 
 @media (min-width: 1200px) {
   :root {
-    --heading-font-size: 40px;
-    --subheading-font-size: 28px;
+    --heading-font-size: 32px;
+    --subheading-font-size: 18px;
     --title-font-size: 64px;
     --font-size: 14px;
   }
@@ -49,8 +49,10 @@
 
 @media (min-width: 1440px) {
   :root {
+    --heading-font-size: 40px;
     --font-size: 16px;
     --title-font-size: 72px; 
+    --subheading-font-size: 22px;
   }
 }
 

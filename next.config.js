@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
     images: {
-      domains: ['www.giantbomb.com'],
+      domains: ['img.opencritic.com'],
   },
   env: {
     BASE_URL: process.env.BASE_URL,

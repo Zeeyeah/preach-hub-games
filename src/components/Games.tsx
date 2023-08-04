@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '@/styles/Games.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
  const Filters = () => {
   return (
@@ -32,10 +33,15 @@ const Games: React.FC<GamesProps> = ({games}) => {
         <Filters />
         <div className={styles["gameCardWrapper"]}>
           {games.map((game: any) => (
-            <div key={game.id} className={styles.gameCard}>
-            <Image src={game.image.original_url} width={300} height={300} alt='' />
-            <h1>{game.name}</h1>
-            </div>
+            <Link href={`/game/${game.id}`} passHref={true} key={game.id} className={styles.gameCard}>
+                <div className={styles["gamePoster"]}>
+                    <Image src={`https://img.opencritic.com/${game.images.box.og}`} fill={true} alt='' />
+                </div>
+                <h2>{Math.round(game.topCriticScore)}<span> % Critic Score</span> </h2>
+                <h1>{game.name}</h1>
+                <ul>
+                </ul>
+            </Link>
           ))}
         </div>
     </section>
