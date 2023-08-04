@@ -29,8 +29,8 @@ const Game: NextPage<GameProps> = ({ gameData }) => {
                     </div>
                 </section>
                 <section className={styles["gameInfo"]}>
-                    <img src={gameData?.bannerScreenshot.fullRes} style={{ width: '100%', filter: 'brightness(0.5)' }} alt="" />
-                    <img src={gameData?.squareScreenshot.fullRes} className={styles["squareScreenshot"]} alt="" />
+                    <img src={gameData?.bannerScreenshot?.fullRes} style={{ width: '100%', filter: 'brightness(0.5)' }} alt="" />
+                    <img src={gameData?.squareScreenshot?.fullRes} className={styles["squareScreenshot"]} alt="" />
                     <div>
                         <h1 className={styles["gameName"]}>{gameData?.name}</h1>
                     </div>
