@@ -86,7 +86,6 @@ export async function getStaticProps({ params }: any) {
     };
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
     await delay(5000);
-    const response = await axios.request(options);
     try {
         const response = await axios.request(options);
         return {
