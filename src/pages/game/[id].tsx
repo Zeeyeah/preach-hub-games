@@ -85,7 +85,7 @@ export async function getStaticProps({ params }: any) {
         }
     };
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    await delay(3000);
+    await delay(5000);
     const response = await axios.request(options);
     try {
         const response = await axios.request(options);
@@ -115,7 +115,7 @@ export async function getStaticPaths() {
             }
         };
         const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-        await delay(3000);
+        await delay(5000);
         const response = await axios.request(options);
         const gamesData = response.data;
         const gameIds = gamesData.map((game: any) => String(game.id)); // Convert IDs to strings
