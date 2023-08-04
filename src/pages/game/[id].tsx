@@ -132,7 +132,7 @@ export async function getStaticPaths() {
         console.error('Error fetching game IDs:', error.message);
         return {
             paths: [],
-            fallback: true,
+            fallback: false,
         };
     }
 }
