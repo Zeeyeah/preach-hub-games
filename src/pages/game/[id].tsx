@@ -6,9 +6,9 @@ import { NextPage } from 'next'
 
 
 interface GameProps {
-  gameData: any;
+    gameData: any;
 }
-const Game: NextPage<GameProps> = ({gameData}) => {
+const Game: NextPage<GameProps> = ({ gameData }) => {
 
     return (
         <Layout title={gameData?.name} desc={gameData?.description}>
@@ -18,11 +18,14 @@ const Game: NextPage<GameProps> = ({gameData}) => {
                         <div>
                             <img src={gameData?.logoScreenshot?.fullRes} alt="" />
                         </div>
-                        <div className={styles["screenShotsSquare"]}>
-                            <img src={gameData?.screenshots[0].fullRes} alt="" />
-                            <img src={gameData?.screenshots[1].fullRes} alt="" />
-                            <img src={gameData?.screenshots[2].fullRes} alt="" />
-                        </div>
+                        {gameData?.screenShots && (
+                            <div className={styles["screenShotsSquare"]}>
+                                <img src={gameData?.screenshots[0].fullRes} alt="" />
+                                <img src={gameData?.screenshots[1].fullRes} alt="" />
+                                <img src={gameData?.screenshots[2].fullRes} alt="" />
+                            </div>
+                        )}
+
                     </div>
                 </section>
                 <section className={styles["gameInfo"]}>
@@ -38,19 +41,19 @@ const Game: NextPage<GameProps> = ({gameData}) => {
                     </div>
                     <ul>
                         <h3>Genre</h3>
-                        {gameData?.Genres.map((genre:any) => (
+                        {gameData?.Genres.map((genre: any) => (
                             <li key={genre.id}>{genre.name}</li>
                         ))}
                     </ul>
                     <ul>
                         <h3>Platforms</h3>
-                        {gameData?.Platforms.map((platform:any) => (
+                        {gameData?.Platforms.map((platform: any) => (
                             <li key={platform.id}>{platform.name}</li>
                         ))}
                     </ul>
                     <ul>
                         <h3>Companies</h3>
-                        {gameData?.Companies.map((company:any) => (
+                        {gameData?.Companies.map((company: any) => (
                             <li key={company.name}>{company.name}</li>
                         ))}
                     </ul>
@@ -70,7 +73,7 @@ const Game: NextPage<GameProps> = ({gameData}) => {
     )
 }
 
-export async function getStaticProps({params}:any) {
+export async function getStaticProps({ params }: any) {
     const api_key: any = process.env.API_KEY;
     const { id } = params;
     const options = {
@@ -82,7 +85,7 @@ export async function getStaticProps({params}:any) {
         }
     };
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    await delay(2500);
+    await delay(3000);
     const response = await axios.request(options);
     try {
         const response = await axios.request(options);
@@ -101,37 +104,37 @@ export async function getStaticProps({params}:any) {
     }
 }
 export async function getStaticPaths() {
-  try {
-    const api_key: any = process.env.API_KEY;
-    const options = {
-      method: 'GET',
-      url: 'https://opencritic-api.p.rapidapi.com/game/hall-of-fame/2020',
-      headers: {
-        'X-RapidAPI-Key': api_key,
-        'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
-      }
-    };
-    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    await delay(2500);
-    const response = await axios.request(options);
-    const gamesData = response.data;
-    const gameIds = gamesData.map((game: any) => String(game.id)); // Convert IDs to strings
+    try {
+        const api_key: any = process.env.API_KEY;
+        const options = {
+            method: 'GET',
+            url: 'https://opencritic-api.p.rapidapi.com/game/hall-of-fame/2020',
+            headers: {
+                'X-RapidAPI-Key': api_key,
+                'X-RapidAPI-Host': 'opencritic-api.p.rapidapi.com'
+            }
+        };
+        const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+        await delay(3000);
+        const response = await axios.request(options);
+        const gamesData = response.data;
+        const gameIds = gamesData.map((game: any) => String(game.id)); // Convert IDs to strings
 
-    const paths = gameIds.map((id: string) => ({
-      params: { id },
-    }));
+        const paths = gameIds.map((id: string) => ({
+            params: { id },
+        }));
 
-    return {
-      paths,
-      fallback: true, // Set to false if you don't want to support undefined paths
-    };
-  } catch (error: any) {
-    console.error('Error fetching game IDs:', error.message);
-    return {
-      paths: [],
-      fallback: true,
-    };
-  }
+        return {
+            paths,
+            fallback: true, // Set to false if you don't want to support undefined paths
+        };
+    } catch (error: any) {
+        console.error('Error fetching game IDs:', error.message);
+        return {
+            paths: [],
+            fallback: true,
+        };
+    }
 }
 
 export default Game
